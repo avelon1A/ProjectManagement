@@ -65,6 +65,7 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\aman\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\30201ddbcc75551648f9ba03600a063c\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\f44f57499d77e02da365d4f45f24d1aa\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\682fb29a048f6811262711622e7d707a\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\aman\.gradle\caches\transforms-3\c5936c602fae27b10a8496745d33f251\transformed\circleimageview-3.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\8f26e9fb5ff00f6ac2f3860d82f6c881\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\4fa19abdc9fb3742e467a057765a739a\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\ee25629305179c3c48b3ba8db5293b17\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -109,8 +110,16 @@ MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\aman\.gradle\cac
 MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\aman\.gradle\caches\transforms-3\aa829ef5dbc574e1cdbeafc44f954994\transformed\firebase-auth-21.1.0\AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:6:5-64
+	android:name
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:6:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:7:5-35:19
+ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:9:5-35:19
 MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\aman\.gradle\caches\transforms-3\6d0cdd23b86d2fa97589c3be92d33c24\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:13:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:24.11.0] C:\Users\aman\.gradle\caches\transforms-3\6d0cdd23b86d2fa97589c3be92d33c24\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:13:5-24:19
 MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\aman\.gradle\caches\transforms-3\ad508897d05f4fb092e11c3409eed3ef\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:8:5-16:19
@@ -145,6 +154,8 @@ MERGED from [androidx.core:core:1.9.0] C:\Users\aman\.gradle\caches\transforms-3
 MERGED from [androidx.core:core:1.9.0] C:\Users\aman\.gradle\caches\transforms-3\29c5439ad728192ecf530ff97f7b1b31\transformed\core-1.9.0\AndroidManifest.xml:28:5-89
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\5ab4497272a1d21134c6ab2b91ba8885\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\5ab4497272a1d21134c6ab2b91ba8885\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\aman\.gradle\caches\transforms-3\c5936c602fae27b10a8496745d33f251\transformed\circleimageview-3.1.0\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\aman\.gradle\caches\transforms-3\c5936c602fae27b10a8496745d33f251\transformed\circleimageview-3.1.0\AndroidManifest.xml:9:5-20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\aman\.gradle\caches\transforms-3\823a727112a93750c5e36780fa55f439\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\aman\.gradle\caches\transforms-3\823a727112a93750c5e36780fa55f439\transformed\profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\aman\.gradle\caches\transforms-3\37b71af0bc9deda145d2d027954b5c42\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
@@ -154,29 +165,23 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\am
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] C:\Users\aman\.gradle\caches\transforms-3\29c5439ad728192ecf530ff97f7b1b31\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:14:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:10:9-54
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:12:9-54
 	android:roundIcon
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:15:9-54
 	tools:targetApi
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:16:9-29
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:18:9-29
 	android:icon
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:15:9-55
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:17:9-55
 	android:dataExtractionRules
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:9:9-65
-activity#com.example.projectmanagement.ui.activity.HomeActivity
-ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:17:9-19:40
-	android:exported
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:19:13-37
-	android:name
-		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:18:13-53
+		ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:11:9-65
 activity#com.example.projectmanagement.ui.activity.SplashActivity
 ADDED from C:\Users\aman\AndroidStudioProjects\ProjectManagement\app\src\main\AndroidManifest.xml:20:9-29:20
 	android:screenOrientation
@@ -331,6 +336,8 @@ MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\aman\.grad
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\f44f57499d77e02da365d4f45f24d1aa\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\682fb29a048f6811262711622e7d707a\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\aman\.gradle\caches\transforms-3\682fb29a048f6811262711622e7d707a\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\aman\.gradle\caches\transforms-3\c5936c602fae27b10a8496745d33f251\transformed\circleimageview-3.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\aman\.gradle\caches\transforms-3\c5936c602fae27b10a8496745d33f251\transformed\circleimageview-3.1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\8f26e9fb5ff00f6ac2f3860d82f6c881\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\8f26e9fb5ff00f6ac2f3860d82f6c881\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\aman\.gradle\caches\transforms-3\4fa19abdc9fb3742e467a057765a739a\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44

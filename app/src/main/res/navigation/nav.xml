@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/createBoard"
-        android:name="com.example.projectmanagement.CreateBoard"
+        android:name="com.example.projectmanagement.ui.fragment.CreateBoard"
         android:label="fragment_create_board"
         tools:layout="@layout/fragment_create_board" />
     <fragment

@@ -1,4 +1,5 @@
 package com.example.projectmanagement.ui.fragment
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
         val navTitle = binding.navView.getHeaderView(0).findViewById<TextView>(R.id.nav_username)
         val logout = binding.navView.menu.findItem(R.id.logout)
        logout.setOnMenuItemClickListener {
-         findNavController().navigate(R.id.action_homeFragment_to_introFragment)
+           showLogoutConfirmationDialog()
            true
         }
         fetchUserDetails {
@@ -63,8 +64,20 @@ class HomeFragment : Fragment() {
             Log.d("user", "${it}")
         }
         binding.fab.setOnClickListener {
-        Toast.makeText(requireContext(),"floatingaction button",Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_homeFragment_to_createBoard)
         }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { dialog, which ->
+                FirebaseAuth.getInstance().signOut()
+                findNavController().navigate(R.id.action_homeFragment_to_introFragment)
+            }
+            .setNegativeButton("No", null)
+            .show()
     }
 
     override fun onDestroyView() {

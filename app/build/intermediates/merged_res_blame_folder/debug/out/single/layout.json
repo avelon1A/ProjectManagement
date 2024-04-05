@@ -1,46 +1,42 @@
 [
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\fragment_signin.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\fragment_signin.xml"
     },
     {
-        "merged": "com.example.projectmanagement.app-mergeDebugResources-53:/layout/fragment_main.xml",
-        "source": "com.example.projectmanagement.app-main-56:/layout/fragment_main.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\fragment_sign_up.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\fragment_sign_up.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\fragment_create_board.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\fragment_create_board.xml"
+        "merged": "com.example.projectmanagement.app-mergeDebugResources-54:/layout/fragment_create_board.xml",
+        "source": "com.example.projectmanagement.app-main-57:/layout/fragment_create_board.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\activity_splash.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\activity_splash.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\fragment_home.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\fragment_intro.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\fragment_intro.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\toolbar_layout.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\toolbar_layout.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\fragment_create_board.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\fragment_create_board.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\fragment_intro.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\fragment_intro.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\fragment_sign_up.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\fragment_sign_up.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\activity_home.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\activity_home.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\toolbar_layout.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\toolbar_layout.xml"
     },
     {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\fragment_signin.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\fragment_signin.xml"
-    },
-    {
-        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-53:\\layout\\nav_header.xml",
-        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-56:\\layout\\nav_header.xml"
+        "merged": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-mergeDebugResources-54:\\layout\\nav_header.xml",
+        "source": "C:\\Users\\aman\\.gradle\\daemon\\8.0\\com.example.projectmanagement.app-main-57:\\layout\\nav_header.xml"
     }
 ]

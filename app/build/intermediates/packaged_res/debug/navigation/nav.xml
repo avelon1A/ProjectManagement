@@ -32,13 +32,10 @@
         <action
             android:id="@+id/action_signIn_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_signIn_to_mainFragment"
-            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/createBoard"
-        android:name="com.example.projectmanagement.CreateBoard"
+        android:name="com.example.projectmanagement.ui.fragment.CreateBoard"
         android:label="fragment_create_board"
         tools:layout="@layout/fragment_create_board" />
     <fragment
@@ -52,17 +49,5 @@
         <action
             android:id="@+id/action_homeFragment_to_introFragment"
             app:destination="@id/introFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.projectmanagement.ui.fragment.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_mainFragment_to_introFragment"
-            app:destination="@id/introFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_createBoard"
-            app:destination="@id/createBoard" />
     </fragment>
 </navigation>

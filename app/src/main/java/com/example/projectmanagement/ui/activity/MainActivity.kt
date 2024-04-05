@@ -3,6 +3,7 @@ package com.example.projectmanagement.ui.activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import com.example.projectmanagement.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -18,7 +19,12 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         if (auth.currentUser != null) {
-
+            val navController = findNavController(R.id.nav_host_fragment)
+            navController.navigate(R.id.homeFragment)
+        }
+        else {
+            val navController = findNavController(R.id.nav_host_fragment)
+            navController.navigate(R.id.introFragment)
         }
 
     }

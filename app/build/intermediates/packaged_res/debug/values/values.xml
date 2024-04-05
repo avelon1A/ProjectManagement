@@ -52,7 +52,9 @@
     <dimen name="sign_up_screen_btn_marginTop">30dp</dimen>
     <dimen name="splash_screen_title_text_size">70sp</dimen>
     <dimen name="toolbar_title_text_size">18sp</dimen>
+    <string name="Create">Create Board</string>
     <string name="app_name">ProjectManager</string>
+    <string name="create">Create\n</string>
     <string name="email">Email</string>
     <string name="gcm_defaultSenderId" translatable="false">90827868669</string>
     <string name="google_api_key" translatable="false">AIzaSyC6lM8JDhMA4VkqoYkBPH7ZZnNrp7k04CI</string>
