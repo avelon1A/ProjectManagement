@@ -53,7 +53,7 @@ class SignIn : Fragment() {
                     }
                     is Resource.Success -> {
 
-                        findNavController().navigate(R.id.action_signIn_to_homeActivity)
+                        findNavController().navigate(R.id.action_signIn_to_homeFragment)
                     }
                     else -> {
                         binding.btnSignIn.visibility = View.VISIBLE
