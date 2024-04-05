@@ -37,7 +37,11 @@
         android:id="@+id/createBoard"
         android:name="com.example.projectmanagement.ui.fragment.CreateBoard"
         android:label="fragment_create_board"
-        tools:layout="@layout/fragment_create_board" />
+        tools:layout="@layout/fragment_create_board" >
+        <action
+            android:id="@+id/action_createBoard_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.projectmanagement.ui.fragment.HomeFragment"

@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.example.projectmanagement.R
 import com.example.projectmanagement.databinding.FragmentHomeBinding
 import com.example.projectmanagement.model.User
+import com.example.projectmanagement.uitl.LocalData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var localData: LocalData
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+        localData = LocalData(requireContext())
         val navController = view.findNavController()
 
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
@@ -62,6 +65,8 @@ class HomeFragment : Fragment() {
             navTitle.text = it.username
             Glide.with(this).load(it.imageURL).into(navProfilePic)
             Log.d("user", "${it}")
+            localData.setCurrentUser(it.username)
+
         }
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_createBoard)

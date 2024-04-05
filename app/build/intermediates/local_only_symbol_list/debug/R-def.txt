@@ -51,6 +51,7 @@ drawable threedot
 drawable white_border_shape_button_rounded
 font barrio
 font rye
+id action_createBoard_to_homeFragment
 id action_homeFragment_to_createBoard
 id action_homeFragment_to_introFragment
 id action_introFragment_to_signIn
