@@ -19,43 +19,48 @@ class CreateBoardViewModel :ViewModel(){
     private val storage:FirebaseStorage = FirebaseStorage.getInstance()
     private var _creation = MutableStateFlow<Resource<Board>>(Resource.unSpecified())
     val response: Flow<Resource<Board>> = _creation
+    private val getcurrentUserID = mAuth.currentUser?.uid
+fun createBoard(name: String,currentUserName:String, image: Uri) {
+    val assignedUserArrayList: ArrayList<String> = ArrayList()
 
+    assignedUserArrayList.add(getcurrentUserID!!)
+    val boardId = UUID.randomUUID().toString()
 
+    val imageName = UUID.randomUUID().toString()
+    val imageRef: StorageReference = storage.reference.child("board_images/$imageName")
+    imageRef.putFile(image)
+        .addOnSuccessListener {
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                val imageUrl = uri.toString()
+                val board = Board(
+                    id = boardId,
+                    name = name,
+                    createdBy = currentUserName,
+                    image = imageUrl,
+                    assignedTo = assignedUserArrayList
+                )
+                saveBoardInfo(board)
+            }.addOnFailureListener { e ->
+                _creation.value = Resource.Error("Failed to get download URL: ${e.message}")
+            }
+        }
+        .addOnFailureListener { e ->
+            _creation.value = Resource.Error("Image upload failed: ${e.message}")
+        }
+}
 
-
-    fun createBoard(name:String, currentUser:String, image:Uri) {
-        val assignedUserArrayList: ArrayList<String> = ArrayList()
-        val getcurrentUserID = mAuth.currentUser?.uid
-        assignedUserArrayList.add(getcurrentUserID!!)
-        val imageName = UUID.randomUUID().toString()
-        val imageRef: StorageReference = storage.reference.child("board_images/$imageName")
-        imageRef.putFile(image)
-            .addOnSuccessListener {
-                imageRef.downloadUrl.addOnSuccessListener { uri ->
-                    val imageUrl = uri.toString()
-                    val board = Board(
-                        name = name,
-                        createdBy = currentUser,
-                        image = imageUrl,
-                        assignedTo = assignedUserArrayList
-                    )
-                    saveBoardInfo(getcurrentUserID, board)
-                }.addOnFailureListener { e ->
-                    _creation.value = Resource.Error("Failed to get download URL: ${e.message}")
-                }
+    private fun saveBoardInfo(board: Board) {
+        db.collection(Constant.BOARD_COLLECTION)
+            .add(board)
+            .addOnSuccessListener { documentReference ->
+                val updatedBoard = board.copy(id = documentReference.id)
+                _creation.value = Resource.Success(updatedBoard)
             }
             .addOnFailureListener { e ->
-                _creation.value = Resource.Error("Image upload failed: ${e.message}")
+                _creation.value = Resource.Error("Failed to save board: ${e.message}")
             }
-
     }
-    private fun saveBoardInfo(userUid: String, board: Board) {
-        db.collection(Constant.BOARD_COLLECTION).document(userUid).set(board).addOnSuccessListener {
-            _creation.value = Resource.Success(board)
-        }.addOnFailureListener {
-            _creation.value = Resource.Error(it.message.toString())
-
-        }
+    private fun getCurrentUserID():String?{
+        return getcurrentUserID
     }
-
 }

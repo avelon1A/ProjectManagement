@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class LocalData(context:Context):SharedPreferenceshelper {
-    private var preferences: SharedPreferences? = null
+    private val preferences: SharedPreferences = context.getSharedPreferences("LocalData", Context.MODE_PRIVATE)
     override fun setCurrentUser(currentuser:String?) {
         preferences?.edit()?.putString("CurrentUser", currentuser)?.apply()
     }

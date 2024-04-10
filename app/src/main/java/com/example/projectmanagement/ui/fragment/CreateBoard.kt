@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmanagement.R
+import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.databinding.FragmentCreateBoardBinding
 import com.example.projectmanagement.uitl.LocalData
 import com.example.projectmanagement.viewModel.CreateBoardViewModel
@@ -27,6 +31,8 @@ class CreateBoard : Fragment() {
     private var selectedImageUri: Uri? = null
     private lateinit var viewModel: CreateBoardViewModel
     private lateinit var storage: FirebaseStorage
+
+
     private val image=""
     private val binding get() = _binding!!
 
@@ -35,7 +41,6 @@ class CreateBoard : Fragment() {
             selectedImageUri  = result.data?.data
             if (selectedImageUri != null) {
                 binding.imageBoard.setImageURI(selectedImageUri)
-
             }
         }
     }
@@ -58,6 +63,7 @@ class CreateBoard : Fragment() {
         currentUser = localData.getCurrentuser().toString()
         viewModel = CreateBoardViewModel()
         storage  = FirebaseStorage.getInstance()
+
 
         binding.imageBoard.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
@@ -95,11 +101,5 @@ class CreateBoard : Fragment() {
                 }
             }
         }
-
-
     }
-
-
-
-
 }

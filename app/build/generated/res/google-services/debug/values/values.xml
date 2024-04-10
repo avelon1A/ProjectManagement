@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">90827868669</string>
-    <string name="google_api_key" translatable="false">AIzaSyC6lM8JDhMA4VkqoYkBPH7ZZnNrp7k04CI</string>
-    <string name="google_app_id" translatable="false">1:90827868669:android:7619efb3fd4ab623ec3194</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC6lM8JDhMA4VkqoYkBPH7ZZnNrp7k04CI</string>
-    <string name="google_storage_bucket" translatable="false">projectmanagement-6bad4.appspot.com</string>
-    <string name="project_id" translatable="false">projectmanagement-6bad4</string>
-</resources>

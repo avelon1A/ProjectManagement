@@ -1,4 +1,5 @@
 package com.example.projectmanagement.ui.fragment
+import Resource
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -8,26 +9,35 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projectmanagement.R
+import com.example.projectmanagement.adapter.BoardAdapter
+import com.example.projectmanagement.adapter.BoardItemClickListener
 import com.example.projectmanagement.databinding.FragmentHomeBinding
+import com.example.projectmanagement.model.Board
 import com.example.projectmanagement.model.User
 import com.example.projectmanagement.uitl.LocalData
+import com.example.projectmanagement.viewModel.HomeFragmentViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), BoardItemClickListener {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private var _binding: FragmentHomeBinding? = null
     private lateinit var localData: LocalData
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: BoardAdapter
+    private lateinit var viewModel: HomeFragmentViewModel
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -46,7 +56,10 @@ class HomeFragment : Fragment() {
         firestore = FirebaseFirestore.getInstance()
         localData = LocalData(requireContext())
         val navController = view.findNavController()
+        viewModel = HomeFragmentViewModel()
+        viewModel.getBoard()
 
+        recyclerView = binding.recyclerView
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         val hamburgerButton = toolbar.findViewById<ImageButton>(R.id.btn_hamburger)
         val drawerLayout = binding.drawerLayout
@@ -71,6 +84,27 @@ class HomeFragment : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_createBoard)
         }
+
+        lifecycleScope.launch(){
+            viewModel.boardResponse.collect{
+                when(it){
+                    is Resource.Loading -> {
+
+                    }
+                    is Resource.Success -> {
+                        Log.d("rv_data","${it.data}")
+                        adapter = BoardAdapter(requireContext(), it.data!!, this@HomeFragment)
+                        recyclerView.adapter = adapter
+                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+        }
+
+
     }
 
     private fun showLogoutConfirmationDialog() {
@@ -111,5 +145,11 @@ class HomeFragment : Fragment() {
                     Log.e("error", "$exception")
                 }
         }
+    }
+
+
+    override fun onItemClick(boardId: String, model: Board) {
+        val action = HomeFragmentDirections.actionHomeFragmentToBoardFragment(model.id)
+       findNavController().navigate(action)
     }
 }

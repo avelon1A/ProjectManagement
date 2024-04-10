@@ -25,6 +25,14 @@
             app:layout_anchor="@id/nav_view"
             app:layout_anchorGravity="top|end"
             />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
     </FrameLayout>
 
 

@@ -47,11 +47,28 @@
         android:name="com.example.projectmanagement.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+
         <action
             android:id="@+id/action_homeFragment_to_createBoard"
             app:destination="@id/createBoard" />
         <action
             android:id="@+id/action_homeFragment_to_introFragment"
             app:destination="@id/introFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_boardFragment"
+            app:destination="@id/boardFragment" >
+            <argument
+                android:name="boardId"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.projectmanagement.ui.fragment.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" >
+        <argument
+            android:name="boardId"
+            app:argType="string" />
     </fragment>
 </navigation>

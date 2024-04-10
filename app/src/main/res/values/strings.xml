@@ -20,4 +20,7 @@
     <string name="username">username</string>
     <string name="Create">Create Board</string>
     <string name="create">Create\n</string>
+    <string name="action_add_list">add list</string>
+    <string name="hint_list_name">last name</string>
+    <string name="add_list">Add List</string>
 </resources>
