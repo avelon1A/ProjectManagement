@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.projectmanagement.Constant
 import com.example.projectmanagement.model.Board
+import com.example.projectmanagement.model.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -22,14 +23,14 @@ class HomeFragmentViewModel:ViewModel() {
     private fun getCurrentUserID():String?{
         return getcurrentUserID
     }
-    fun getBoard(){
+    fun getBoard() {
         db.collection(Constant.BOARD_COLLECTION)
-            .whereArrayContains(Constant.ASSIGNED_TO,getCurrentUserID()!!)
+            .whereArrayContains(Constant.ASSIGNED_TO, getCurrentUserID()!!)
             .get()
-            .addOnSuccessListener{ document ->
+            .addOnSuccessListener { documents ->
                 val boardList: ArrayList<Board> = ArrayList()
-                Log.d("rv_data","${document}")
-                for(i in document.documents){
+                Log.d("rv_data","${documents}")
+                for(i in documents.documents){
                     val board = i.toObject(Board::class.java)
                     if (board != null) {
                         board.id = i.id
@@ -39,7 +40,7 @@ class HomeFragmentViewModel:ViewModel() {
                 _board.value = Resource.Success(boardList)
             }
             .addOnFailureListener {
-                _board.value = Resource.Error("unable to load boardList")
+                _board.value = Resource.Error("Unable to load boardList")
             }
     }
 

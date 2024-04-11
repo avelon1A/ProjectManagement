@@ -6,5 +6,5 @@ object Constant {
     const val BOARD_COLLECTION ="board"
     const val ASSIGNED_TO = "assignedTo"
     const val Board_ID = "id"
-    const val TASK_LIST ="tasklist"
+    const val TASK_LIST ="task"
 }

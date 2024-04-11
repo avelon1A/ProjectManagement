@@ -4,12 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Board(
-    var id:String = "",
-    val name :String = "",
-    val image:String = "",
-    val createdBy:String ="",
-    val assignedTo:ArrayList<String> = ArrayList(),
-    val task: List<Task> = ArrayList()
+    var id: String = "",
+    val name: String = "",
+    val image: String = "",
+    val createdBy: String = "",
+    val assignedTo: ArrayList<String> = ArrayList(),
+    val task: ArrayList<Task> = ArrayList()
 ):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,

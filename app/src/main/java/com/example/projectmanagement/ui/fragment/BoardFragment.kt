@@ -52,9 +52,9 @@ private  var _binding: FragmentBoardBinding? = null
         super.onViewCreated(view, savedInstanceState)
 
         val boardId = args.boardId
-        viewModel = TaskFragmentViewModel()
-//        viewModel.saveTaskInfo(boardId,Task("task1","aman"))
-//        viewModel.getBoardById(boardId)
+       viewModel = TaskFragmentViewModel()
+        viewModel.saveTaskInfo(boardId,Task("task2","aman"))
+        viewModel.getBoardById(boardId)
          dataList = ArrayList()
         dataList.add(Task(resources.getString(R.string.add_list)))
 
@@ -91,7 +91,7 @@ private  var _binding: FragmentBoardBinding? = null
     }
 
     override fun doneClick(name: String) {
-        dataList.add(Task(name))
+
     }
 
 

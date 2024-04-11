@@ -37,7 +37,8 @@ fun createBoard(name: String,currentUserName:String, image: Uri) {
                     name = name,
                     createdBy = currentUserName,
                     image = imageUrl,
-                    assignedTo = assignedUserArrayList
+                    assignedTo = assignedUserArrayList,
+                     task = ArrayList()
                 )
                 saveBoardInfo(board)
             }.addOnFailureListener { e ->

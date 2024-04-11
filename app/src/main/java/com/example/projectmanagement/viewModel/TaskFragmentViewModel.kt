@@ -13,22 +13,37 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class TaskFragmentViewModel:ViewModel() {
 
     val db:FirebaseFirestore = FirebaseFirestore.getInstance()
-    // MutableStateFlow to emit the current board state
     private var _register = MutableStateFlow<Resource<Board>>(Resource.unSpecified())
     val response: Flow<Resource<Board>> = _register
 
 
-    fun saveTaskInfo(id:String,task:Task) {
-        val taksListHashMap = HashMap<String,Any>()
-        taksListHashMap[Constant.TASK_LIST] = task
+    fun saveTaskInfo(id: String, task: Task) {
         db.collection(Constant.BOARD_COLLECTION)
             .document(id)
-            .update(taksListHashMap)
-            .addOnSuccessListener { documentReference ->
-              Log.d("update","$documentReference")
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val board = documentSnapshot.toObject(Board::class.java)
+                if (board != null) {
+                    val tasks = board.task // Get the current list of tasks
+                    tasks.add(task) // Add the new task to the list
+                    val updatedData = mapOf(
+                        Constant.TASK_LIST to tasks
+                    )
+                    db.collection(Constant.BOARD_COLLECTION)
+                        .document(id)
+                        .update(updatedData)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d("update", "$documentReference")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("update", e.message ?: "Unknown error")
+                        }
+                } else {
+                    Log.e("saveTaskInfo", "Board not found for ID: $id")
+                }
             }
             .addOnFailureListener { e ->
-                Log.d("update","$e")
+                Log.e("saveTaskInfo", "Error getting board document", e)
             }
     }
      fun getBoardById(id: String) {

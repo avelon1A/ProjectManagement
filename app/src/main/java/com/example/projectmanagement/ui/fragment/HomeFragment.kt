@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.projectmanagement.R
 import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.adapter.BoardItemClickListener
+import com.example.projectmanagement.adapter.TaskListItemsAdapter
 import com.example.projectmanagement.databinding.FragmentHomeBinding
 import com.example.projectmanagement.model.Board
 import com.example.projectmanagement.model.User
