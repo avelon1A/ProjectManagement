@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projectmanagement.Constant
 import com.example.projectmanagement.model.Board
+import com.example.projectmanagement.model.Card
 import com.example.projectmanagement.model.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 
 class TaskFragmentViewModel : ViewModel() {
 
@@ -94,5 +94,93 @@ class TaskFragmentViewModel : ViewModel() {
                 }
             }
     }
+
+    fun updateTaskName(boardId: String, taskIndex: Int, newName: String) {
+        db.collection(Constant.BOARD_COLLECTION)
+            .document(boardId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val board = documentSnapshot.toObject(Board::class.java)
+                if (board != null && taskIndex >= 0 && taskIndex < board.task.size) {
+                    val updatedTasks = board.task.toMutableList()
+                    updatedTasks[taskIndex].title = newName
+
+                    db.collection(Constant.BOARD_COLLECTION)
+                        .document(boardId)
+                        .update("task", updatedTasks)
+                        .addOnSuccessListener {
+                            Log.d("updateTaskName", "Task name updated successfully")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("updateTaskName", "Error updating task name", e)
+                        }
+                } else {
+                    Log.e("updateTaskName", "Invalid board or task index")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("updateTaskName", "Error getting board document", e)
+            }
+    }
+
+    fun deleteTask(boardId: String, position: Int) {
+        db.collection(Constant.BOARD_COLLECTION)
+            .document(boardId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val board = documentSnapshot.toObject(Board::class.java)
+                if (board != null && position >= 0 && position < board.task.size) {
+                    val updatedTasks = board.task.toMutableList()
+                    updatedTasks.removeAt(position)
+
+                    db.collection(Constant.BOARD_COLLECTION)
+                        .document(boardId)
+                        .update("task", updatedTasks)
+                        .addOnSuccessListener {
+                            Log.d("deleteTask", "Task deleted successfully")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("deleteTask", "Error deleting task", e)
+                        }
+                } else {
+                    Log.e("deleteTask", "Invalid board or task position")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("deleteTask", "Error getting board document", e)
+            }
+    }
+
+    fun addCardToTask(boardId: String, taskIndex: Int, card: Card) {
+        db.collection(Constant.BOARD_COLLECTION)
+            .document(boardId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val board = documentSnapshot.toObject(Board::class.java)
+                if (board != null && taskIndex >= 0 && taskIndex < board.task.size) {
+                    val task = board.task[taskIndex]
+                    task.cards.add(card)
+                    val updatedTaskData = mapOf(
+                        "task" to board.task
+                    )
+
+                    db.collection(Constant.BOARD_COLLECTION)
+                        .document(boardId)
+                        .update(updatedTaskData)
+                        .addOnSuccessListener {
+                            Log.d("addCardToTask", "Card added to task successfully")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("addCardToTask", "Failed to add card to task", e)
+                        }
+                } else {
+                    Log.e("addCardToTask", "Board or task index invalid")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("addCardToTask", "Error getting board document", e)
+            }
+    }
+
 
 }

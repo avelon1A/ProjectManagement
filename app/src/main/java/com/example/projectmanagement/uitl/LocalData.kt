@@ -13,4 +13,15 @@ class LocalData(context:Context):SharedPreferenceshelper {
         return preferences?.getString("CurrentUser", null)
     }
 
+    override fun setCurrentUserId(userid: String?) {
+        preferences?.edit()?.putString("CurrentUserId", userid)?.apply()
+
+    }
+
+    override fun getCurrentUserId(): String? {
+        return preferences?.getString("CurrentUserId", null)
+
+    }
+
+
 }

@@ -23,4 +23,5 @@
     <string name="action_add_list">add list</string>
     <string name="hint_list_name">last name</string>
     <string name="add_list">Add List</string>
+    <string name="task_name">Task Name</string>
 </resources>

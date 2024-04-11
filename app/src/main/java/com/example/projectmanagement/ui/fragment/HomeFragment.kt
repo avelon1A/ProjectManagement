@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide
 import com.example.projectmanagement.R
 import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.adapter.BoardItemClickListener
-import com.example.projectmanagement.adapter.TaskListItemsAdapter
 import com.example.projectmanagement.databinding.FragmentHomeBinding
 import com.example.projectmanagement.model.Board
 import com.example.projectmanagement.model.User
@@ -129,6 +128,7 @@ class HomeFragment : Fragment(), BoardItemClickListener {
         val currentUser = auth.currentUser
         currentUser?.let { user ->
             val userId = user.uid
+            localData.setCurrentUserId(userId)
 
             firestore.collection("user").document(userId)
                 .get()
@@ -150,7 +150,7 @@ class HomeFragment : Fragment(), BoardItemClickListener {
 
 
     override fun onItemClick(boardId: String, model: Board) {
-        val action = HomeFragmentDirections.actionHomeFragmentToBoardFragment(model.id)
+        val action = HomeFragmentDirections.actionHomeFragmentToBoardFragment(model.id,model.name)
        findNavController().navigate(action)
     }
 }

@@ -60,6 +60,9 @@
             <argument
                 android:name="boardId"
                 app:argType="string" />
+            <argument
+                android:name="BoardName"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -69,6 +72,9 @@
         tools:layout="@layout/fragment_board" >
         <argument
             android:name="boardId"
+            app:argType="string" />
+        <argument
+            android:name="BoardName"
             app:argType="string" />
     </fragment>
 </navigation>

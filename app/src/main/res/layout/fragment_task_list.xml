@@ -58,8 +58,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:autofillHints="@string/hint_list_name"
-                    android:hint="@string/hint_list_name"
+                    android:autofillHints="Task Name"
+                    android:hint="@string/task_name"
                     android:inputType="text" />
 
                 <ImageButton
@@ -159,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:autofillHints="@string/hint_list_name"
-                        android:hint="@string/hint_list_name"
+                        android:hint="@string/task_name"
                         android:inputType="text" />
 
                     <ImageButton
@@ -232,10 +232,9 @@
                 android:elevation="@dimen/task_item_add_card_text_elevation"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:visibility="gone"
                 android:padding="@dimen/task_item_add_item_text_padding"
                 android:text="Add card"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="@dimen/task_item_add_item_text_size"
                 tools:visibility="visible" />
         </LinearLayout>

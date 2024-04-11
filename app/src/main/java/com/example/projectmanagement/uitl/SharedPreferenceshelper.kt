@@ -7,4 +7,7 @@ interface  SharedPreferenceshelper {
     fun setCurrentUser(user: String?)
     fun getCurrentuser():String?
 
+    fun setCurrentUserId(userid:String?)
+    fun getCurrentUserId():String?
+
 }
