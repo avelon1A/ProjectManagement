@@ -20,7 +20,7 @@ class SignUp : Fragment() {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
-    private  lateinit var  viewModel: SignUpViewModel
+    private lateinit var viewModel: SignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,15 +53,18 @@ class SignUp : Fragment() {
                         binding.buttonAnimation.playAnimation()
 
                     }
+
                     is Resource.Success -> {
                         binding.btnSignUp.visibility = View.VISIBLE
                         binding.buttonAnimation.visibility = View.GONE
                     }
+
                     is Resource.Error -> {
                         Log.d("test", resource.message.toString())
                         binding.btnSignUp.visibility = View.VISIBLE
                         binding.buttonAnimation.visibility = View.GONE
                     }
+
                     else -> {
 
                     }
@@ -69,17 +72,17 @@ class SignUp : Fragment() {
             }
         }
         lifecycleScope.launch {
-            viewModel.validation.collect(){
-                if(it.email is RegisterValidation.Failed){
-                    withContext(Dispatchers.Main){
+            viewModel.validation.collect() {
+                if (it.email is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
                         binding.etEmail.apply {
                             requestFocus()
                             error = it.email.message
                         }
                     }
                 }
-                if(it.password is RegisterValidation.Failed){
-                    withContext(Dispatchers.Main){
+                if (it.password is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
                         binding.etPassword.apply {
                             requestFocus()
                             error = it.password.message

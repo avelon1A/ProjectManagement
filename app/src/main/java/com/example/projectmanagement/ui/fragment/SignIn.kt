@@ -22,7 +22,7 @@ class SignIn : Fragment() {
 
     private var _binding: FragmentSigninBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  viewModel:LoginViewModel
+    private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,22 +39,24 @@ class SignIn : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = LoginViewModel()
         binding.btnSignIn.setOnClickListener {
-            val email =binding.etEmail.text.toString()
+            val email = binding.etEmail.text.toString()
             val password = binding.etPasswordLogin.text.toString()
-            viewModel.login(email,password)
+            viewModel.login(email, password)
         }
-        lifecycleScope.launch(){
-            viewModel.result.collect{
-                when(it){
+        lifecycleScope.launch() {
+            viewModel.result.collect {
+                when (it) {
                     is Resource.Loading -> {
                         binding.btnSignIn.visibility = View.GONE
                         binding.buttonAnimation.visibility = View.VISIBLE
                         binding.buttonAnimation.playAnimation()
                     }
+
                     is Resource.Success -> {
 
                         findNavController().navigate(R.id.action_signIn_to_homeFragment)
                     }
+
                     else -> {
                         binding.btnSignIn.visibility = View.VISIBLE
                         binding.buttonAnimation.visibility = View.GONE
@@ -64,24 +66,28 @@ class SignIn : Fragment() {
             }
         }
         lifecycleScope.launch {
-            viewModel.validation.collect(){
-                if(it.email is RegisterValidation.Failed){
-                    withContext(Dispatchers.Main){
+            viewModel.validation.collect() {
+                if (it.email is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
                         binding.etEmail.apply {
                             requestFocus()
                             error = it.email.message
                         }
                     }
                 }
-                if(it.password is RegisterValidation.Failed){
-                    withContext(Dispatchers.Main){
+                if (it.password is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
                         binding.etPasswordLogin.apply {
                             requestFocus()
                             error = it.password.message
-                        } } } }
+                        }
+                    }
+                }
+            }
         }
 
     }
+
     private fun toast(result: String?) {
         Toast.makeText(requireContext(), result, Toast.LENGTH_LONG)?.show()
     }

@@ -17,6 +17,7 @@ import com.example.projectmanagement.adapter.TaskListItemsAdapter
 import com.example.projectmanagement.databinding.FragmentBoardBinding
 import com.example.projectmanagement.model.Board
 import com.example.projectmanagement.model.Task
+import com.example.projectmanagement.uitl.LocalData
 import com.example.projectmanagement.viewModel.TaskFragmentViewModel
 import kotlinx.coroutines.launch
 
@@ -28,7 +29,11 @@ private  var _binding: FragmentBoardBinding? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var boardAdapter: TaskListItemsAdapter
     private lateinit var viewModel: TaskFragmentViewModel
-    private lateinit var dataList:ArrayList<Task>
+    private lateinit var boardId:String
+    private lateinit var localData: LocalData
+    private lateinit var currentUser:String
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,12 +56,12 @@ private  var _binding: FragmentBoardBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val boardId = args.boardId
+        boardId = args.boardId
        viewModel = TaskFragmentViewModel()
-        viewModel.saveTaskInfo(boardId,Task("task2","aman"))
-        viewModel.getBoardById(boardId)
-         dataList = ArrayList()
-        dataList.add(Task(resources.getString(R.string.add_list)))
+        viewModel.getBoardByIdAndListen(boardId)
+        localData = LocalData(requireContext())
+        currentUser = localData.getCurrentuser().toString()
+
 
 
         recyclerView = binding.rvTaskList
@@ -90,9 +95,11 @@ private  var _binding: FragmentBoardBinding? = null
 
     }
 
-    override fun doneClick(name: String) {
-
+    override fun addTask(name: String) {
+        viewModel.saveTaskInfo(boardId,Task(name,currentUser))
+        recyclerView.scrollToPosition(0)
     }
+
 
 
 

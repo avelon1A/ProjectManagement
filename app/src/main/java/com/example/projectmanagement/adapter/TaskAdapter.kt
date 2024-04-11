@@ -3,6 +3,7 @@ package com.example.projectmanagement.adapter
 
 import android.content.Context
 import android.content.res.Resources
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,6 @@ open class TaskListItemsAdapter(
     private var list: List<Task>,
     private val itemClickListener: BoardClicklistner
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_task_list, parent, false)
@@ -38,6 +38,7 @@ open class TaskListItemsAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val model = list[position]
+        Log.d("list","$list")
 
         if (holder is MyViewHolder) {
 
@@ -66,10 +67,11 @@ open class TaskListItemsAdapter(
             if (!holder.editName.text.isNotEmpty()) {
                 holder.doneButton.setOnClickListener {
                     val name = holder.editName.text.toString()
-                    itemClickListener.doneClick(name)
+                    itemClickListener.addTask(name)
+                    holder.CvList.visibility = View.GONE
+
+
                 }
-
-
             }
         }
     }
@@ -102,5 +104,5 @@ open class TaskListItemsAdapter(
 
 interface BoardClicklistner {
     fun onItemClick(model: Task)
-    fun doneClick(name: String)
+    fun addTask(name: String)
 }
