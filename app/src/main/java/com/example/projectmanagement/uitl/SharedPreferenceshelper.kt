@@ -1,7 +1,5 @@
 package com.example.projectmanagement.uitl
 
-import com.google.firebase.firestore.auth.User
-
 interface  SharedPreferenceshelper {
 
     fun setCurrentUser(user: String?)
@@ -9,5 +7,8 @@ interface  SharedPreferenceshelper {
 
     fun setCurrentUserId(userid:String?)
     fun getCurrentUserId():String?
+
+    fun saveAssignedTo(assignTo:ArrayList<String>?)
+    fun getAssignedTO():ArrayList<String>?
 
 }

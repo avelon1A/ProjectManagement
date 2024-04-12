@@ -5,7 +5,6 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.example.projectmanagement.Constant
 import com.example.projectmanagement.model.Board
-import com.example.projectmanagement.uitl.LocalData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage

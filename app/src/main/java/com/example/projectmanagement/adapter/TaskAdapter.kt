@@ -22,7 +22,8 @@ import com.google.common.io.LineReader
 open class TaskListItemsAdapter(
     private val context: Context,
     private var list: List<Task>,
-    private val itemClickListener: BoardClicklistner
+    private val itemClickListener: BoardClicklistner,
+    private val carditemClick: CarditemClick
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -101,8 +102,9 @@ open class TaskListItemsAdapter(
                 }
                 holder.rvCardList.layoutManager = LinearLayoutManager(context)
                 holder.rvCardList.setHasFixedSize(true)
-                val adapter = CardAdapter(context,model.cards)
+                val adapter = CardAdapter(context,model.cards,carditemClick,position)
                 holder.rvCardList.adapter = adapter
+
 
 
             }

@@ -1,5 +1,6 @@
 package com.example.projectmanagement.ui.fragment
 import Resource
+import User
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,9 @@ import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.adapter.BoardItemClickListener
 import com.example.projectmanagement.databinding.FragmentHomeBinding
 import com.example.projectmanagement.model.Board
-import com.example.projectmanagement.model.User
+import com.example.projectmanagement.ui.activity.CustomColorPickerDialog
+import com.example.projectmanagement.ui.activity.CustomLoadingDialog
+import com.example.projectmanagement.uitl.LoadingDialogUtil.showLoadingDialog
 import com.example.projectmanagement.uitl.LocalData
 import com.example.projectmanagement.viewModel.HomeFragmentViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -70,10 +73,16 @@ class HomeFragment : Fragment(), BoardItemClickListener {
         val navProfilePic = binding.navView.getHeaderView(0).findViewById<ImageView>(R.id.image_profile)
         val navTitle = binding.navView.getHeaderView(0).findViewById<TextView>(R.id.nav_username)
         val logout = binding.navView.menu.findItem(R.id.logout)
+        val usernameTitle = binding.navView.menu.findItem(R.id.myProfile)
+        usernameTitle.setOnMenuItemClickListener {
+
+            true
+        }
        logout.setOnMenuItemClickListener {
            showLogoutConfirmationDialog()
            true
         }
+
         fetchUserDetails {
             navTitle.text = it.username
             Glide.with(this).load(it.imageURL).into(navProfilePic)
@@ -92,6 +101,7 @@ class HomeFragment : Fragment(), BoardItemClickListener {
 
                     }
                     is Resource.Success -> {
+
                         Log.d("rv_data","${it.data}")
                         adapter = BoardAdapter(requireContext(), it.data!!, this@HomeFragment)
                         recyclerView.adapter = adapter

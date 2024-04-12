@@ -9,5 +9,16 @@
     <color name="primary_text_color">#373A43</color>
     <color name="secondary_text_color">#7A8089</color>
 
+    <color name="Color1">#D60000</color>
+    <color name="Color2">#43A047</color>
+    <color name="Color3">#FDD835</color>
+    <color name="Color4">#8E24AA</color>
+    <color name="Color5">#1E88E5</color>
+    <color name="Color6">#D81B60</color>
+    <color name="Color7">#F4511E</color>
+
+
+
+
 
 </resources>

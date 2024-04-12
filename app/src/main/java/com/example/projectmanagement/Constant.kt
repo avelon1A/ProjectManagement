@@ -2,6 +2,7 @@ package com.example.projectmanagement
 
 object Constant {
 
+   const val ID = "uid"
     const val USER_COLLECTION ="user"
     const val BOARD_COLLECTION ="board"
     const val ASSIGNED_TO = "assignedTo"

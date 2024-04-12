@@ -76,5 +76,60 @@
         <argument
             android:name="BoardName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_boardFragment_to_membersFragment"
+            app:destination="@id/membersFragment" >
+
+        </action>
+        <action
+            android:id="@+id/action_boardFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/membersFragment"
+        android:name="com.example.projectmanagement.ui.fragment.MembersFragment"
+        android:label="fragment_members"
+        tools:layout="@layout/fragment_members" >
+        <argument
+            android:name="boardId"
+            app:argType="string" />
+        <argument
+            android:name="BoardName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_membersFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.projectmanagement.ui.fragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <argument
+            android:name="boardId"
+            app:argType="string" />
+        <argument
+            android:name="BoardName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.example.projectmanagement.ui.fragment.CardDetailFragment"
+        android:label="fragment_card_detail"
+        tools:layout="@layout/fragment_card_detail" >
+        <argument
+            android:name="card"
+            app:argType="com.example.projectmanagement.model.Card" />
+        <argument
+            android:name="cardPosition"
+            app:argType="integer" />
+        <argument
+            android:name="taskPosition"
+            app:argType="integer" />
+        <argument
+            android:name="boardId"
+            app:argType="string" />
+
     </fragment>
 </navigation>

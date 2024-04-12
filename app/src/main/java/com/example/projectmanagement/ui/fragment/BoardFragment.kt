@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projectmanagement.R
 import com.example.projectmanagement.adapter.BoardClicklistner
+import com.example.projectmanagement.adapter.CarditemClick
 import com.example.projectmanagement.adapter.TaskListItemsAdapter
 import com.example.projectmanagement.databinding.FragmentBoardBinding
 import com.example.projectmanagement.model.Card
@@ -20,7 +24,7 @@ import com.example.projectmanagement.viewModel.TaskFragmentViewModel
 import kotlinx.coroutines.launch
 
 
-class BoardFragment : Fragment(), BoardClicklistner {
+class BoardFragment : Fragment(), BoardClicklistner,CarditemClick {
     private var _binding: FragmentBoardBinding? = null
     private val binding get() = _binding!!
     val args: BoardFragmentArgs by navArgs()
@@ -40,12 +44,13 @@ class BoardFragment : Fragment(), BoardClicklistner {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBoardBinding.inflate(inflater, container, false)
         return binding.root
+
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -62,14 +67,16 @@ class BoardFragment : Fragment(), BoardClicklistner {
         localData = LocalData(requireContext())
         currentUser = localData.getCurrentuser().toString()
         currentId = localData.getCurrentUserId().toString()
-        Log.d("currentUserNametest","$currentId")
-        Log.d("currentUserNametest","$currentUser")
+        Log.d("currentUserNametest", "$currentId")
+        Log.d("currentUserNametest", "$currentUser")
 
-//        if (!isTaskAdded) {
-//            viewModel.saveTaskInfo(boardId, Task("test", currentUser))
-//            isTaskAdded = true
-//        }
 
+        binding.ivOverflowMenu.setOnClickListener {
+            showOverflowMenu()
+        }
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         recyclerView = binding.rvTaskList
         binding.tvTitleTask.text = BoardName
@@ -85,18 +92,11 @@ class BoardFragment : Fragment(), BoardClicklistner {
                     is Resource.Success -> {
                         Log.d("rv_task", "${it.data}")
                         boardAdapter = it.data?.let { it1 ->
-                            TaskListItemsAdapter(
-                                requireContext(),
-                                it1.task,
-                                this@BoardFragment
-                            )
-                        }!!
+                            TaskListItemsAdapter(requireContext(), it1.task, this@BoardFragment,this@BoardFragment) }!!
                         recyclerView.adapter = boardAdapter
                         recyclerView.layoutManager = LinearLayoutManager(
-                            requireContext(),
-                            LinearLayoutManager.HORIZONTAL,
-                            false
-                        )
+                            requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                        localData.saveAssignedTo(it.data.assignedTo)
                     }
 
                     else -> {
@@ -105,8 +105,26 @@ class BoardFragment : Fragment(), BoardClicklistner {
                 }
             }
         }
+     val assignTo =    localData.getAssignedTO()
 
 
+    }
+
+    private fun showOverflowMenu() {
+        val popupMenu = PopupMenu(requireContext(), binding.ivOverflowMenu)
+        popupMenu.menuInflater.inflate(R.menu.members_menu, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.member_menu -> {
+              val action = BoardFragmentDirections.actionBoardFragmentToMembersFragment(boardId,BoardName)
+                    findNavController().navigate(action)
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
 
     override fun onItemClick(model: Task) {
@@ -131,6 +149,13 @@ class BoardFragment : Fragment(), BoardClicklistner {
         var card = Card(name = name, createdBy = currentId, assignedTo = ArrayList())
         card.assignedTo.add(currentId)
         viewModel.addCardToTask(boardId, position, card)
+    }
+
+
+
+    override fun onItemClick(model: Card, cardPosition: Int, taskPosition: Int) {
+        val action = BoardFragmentDirections.actionBoardFragmentToCardDetailFragment(model,cardPosition,taskPosition,boardId)
+        findNavController().navigate(action)
     }
 
 

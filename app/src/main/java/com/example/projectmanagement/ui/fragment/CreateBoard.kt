@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmanagement.R
-import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.databinding.FragmentCreateBoardBinding
+import com.example.projectmanagement.ui.activity.CustomLoadingDialog
+import com.example.projectmanagement.uitl.LoadingDialogUtil
+import com.example.projectmanagement.uitl.LoadingDialogUtil.dismissLoadingDialog
 import com.example.projectmanagement.uitl.LocalData
 import com.example.projectmanagement.viewModel.CreateBoardViewModel
 import com.google.firebase.storage.FirebaseStorage
@@ -26,24 +25,26 @@ import kotlinx.coroutines.launch
 
 class CreateBoard : Fragment() {
     private var _binding: FragmentCreateBoardBinding? = null
-    private lateinit var currentUser:String
+    private lateinit var currentUser: String
     private lateinit var localData: LocalData
     private var selectedImageUri: Uri? = null
     private lateinit var viewModel: CreateBoardViewModel
     private lateinit var storage: FirebaseStorage
 
 
-    private val image=""
+    private val image = ""
     private val binding get() = _binding!!
 
-    private val imagePickContract = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            selectedImageUri  = result.data?.data
-            if (selectedImageUri != null) {
-                binding.imageBoard.setImageURI(selectedImageUri)
+    private val imagePickContract =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                selectedImageUri = result.data?.data
+                if (selectedImageUri != null) {
+                    binding.imageBoard.setImageURI(selectedImageUri)
+                }
             }
         }
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,7 +54,7 @@ class CreateBoard : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCreateBoardBinding.inflate(inflater,container,false)
+        _binding = FragmentCreateBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,7 +63,7 @@ class CreateBoard : Fragment() {
         localData = LocalData(requireContext())
         currentUser = localData.getCurrentuser().toString()
         viewModel = CreateBoardViewModel()
-        storage  = FirebaseStorage.getInstance()
+        storage = FirebaseStorage.getInstance()
 
 
         binding.imageBoard.setOnClickListener {
@@ -73,30 +74,31 @@ class CreateBoard : Fragment() {
         }
         binding.createBoard.setOnClickListener {
             val name = binding.etNameBoard.text.toString()
-
-            if(name.isEmpty()){
-                   binding.etNameBoard.apply {
-                       requestFocus()
-                       error = "name cannot be empty"
-                   }
-               }
-
-            viewModel.createBoard(name,currentUser,selectedImageUri!!)
-
-
+            LoadingDialogUtil.showLoadingDialog(requireContext())
+            if (name.isEmpty()) {
+                binding.etNameBoard.apply {
+                    requestFocus()
+                    error = "name cannot be empty"
+                }
+            }
+            viewModel.createBoard(name, currentUser, selectedImageUri!!)
         }
-        lifecycleScope.launch(){
-            viewModel.response.collect{
-                when(it){
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        lifecycleScope.launch() {
+            viewModel.response.collect {
+                when (it) {
                     is Resource.Loading -> {
 
                     }
-                    is Resource.Success -> {
 
+                    is Resource.Success -> {
+                        dismissLoadingDialog()
                         findNavController().navigate(R.id.action_createBoard_to_homeFragment)
                     }
                     else -> {
-
+                        dismissLoadingDialog()
                     }
                 }
             }

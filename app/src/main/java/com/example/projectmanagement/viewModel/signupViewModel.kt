@@ -1,10 +1,11 @@
 package com.example.projectmanagement.viewModel
 
 import RegisterFeildState
+import RegisterValidation
 import Resource
+import User
 import androidx.lifecycle.ViewModel
 import com.example.projectmanagement.Constant.USER_COLLECTION
-import com.example.projectmanagement.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import emailValid
