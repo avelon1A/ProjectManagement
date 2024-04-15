@@ -6,9 +6,11 @@ import android.os.Parcelable
 data class Card(
     val name: String = "",
     val createdBy: String = "",
+    var labelColor:String ="",
     val assignedTo: ArrayList<String> = ArrayList()
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.createStringArrayList() ?: ArrayList()
@@ -17,6 +19,7 @@ data class Card(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(createdBy)
+        parcel.writeString(labelColor)
         parcel.writeStringList(assignedTo)
     }
 

@@ -47,8 +47,6 @@ m
 Lapp/src/main/java/com/example/projectmanagement/ui/fragment/BoardFragment.kt,3\d\3d57579ba65da6bb49d8e62fa9335ec8687bb17d
 y
 Iapp/src/main/java/com/example/projectmanagement/adapter/membersAdapter.kt,5\a\5a30fa6633c31a46a17c6347083ee4776af16b29
-€
-Papp/src/main/java/com/example/projectmanagement/ui/activity/CustomAlertDialog.kt,4\4\44ffc6f80f97e2c99752907e461350911471ac05
 }
 Mapp/src/main/java/com/example/projectmanagement/ui/activity/Custom_Loading.kt,1\4\1496ef27edcb63f19d67238f46342145e6464769
 ~

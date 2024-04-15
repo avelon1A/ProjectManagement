@@ -22,50 +22,43 @@
             android:id="@+id/color1"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="50dp"
             android:background="@color/Color1"/>
         <View
             android:id="@+id/color2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_height="50dp"
             android:background="@color/Color2"/>
         <View
             android:id="@+id/color3"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_height="50dp"
             android:background="@color/Color3"/>
         <View
             android:id="@+id/color4"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_height="50dp"
             android:background="@color/Color4"/>
         <View
             android:id="@+id/color5"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_height="50dp"
             android:background="@color/Color5"/>
         <View
             android:id="@+id/color6"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@color/Color7"/>
+            android:layout_height="50dp"
+            android:background="@color/Color6"/>
         <View
             android:id="@+id/color7"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_height="50dp"
             android:background="@color/Color7"/>
 
 

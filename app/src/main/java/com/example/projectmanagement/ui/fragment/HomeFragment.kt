@@ -1,4 +1,5 @@
 package com.example.projectmanagement.ui.fragment
+import HomeFragmentViewModel
 import Resource
 import User
 import android.app.AlertDialog
@@ -24,11 +25,7 @@ import com.example.projectmanagement.adapter.BoardAdapter
 import com.example.projectmanagement.adapter.BoardItemClickListener
 import com.example.projectmanagement.databinding.FragmentHomeBinding
 import com.example.projectmanagement.model.Board
-import com.example.projectmanagement.ui.activity.CustomColorPickerDialog
-import com.example.projectmanagement.ui.activity.CustomLoadingDialog
-import com.example.projectmanagement.uitl.LoadingDialogUtil.showLoadingDialog
 import com.example.projectmanagement.uitl.LocalData
-import com.example.projectmanagement.viewModel.HomeFragmentViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
@@ -52,6 +49,8 @@ class HomeFragment : Fragment(), BoardItemClickListener {
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,7 +59,6 @@ class HomeFragment : Fragment(), BoardItemClickListener {
         localData = LocalData(requireContext())
         val navController = view.findNavController()
         viewModel = HomeFragmentViewModel()
-        viewModel.getBoard()
 
         recyclerView = binding.recyclerView
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
@@ -95,7 +93,7 @@ class HomeFragment : Fragment(), BoardItemClickListener {
         }
 
         lifecycleScope.launch(){
-            viewModel.boardResponse.collect{
+            viewModel.board.collect{
                 when(it){
                     is Resource.Loading -> {
 

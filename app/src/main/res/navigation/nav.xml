@@ -56,7 +56,12 @@
             app:destination="@id/introFragment" />
         <action
             android:id="@+id/action_homeFragment_to_boardFragment"
-            app:destination="@id/boardFragment" >
+            app:destination="@id/boardFragment"
+            app:enterAnim="@anim/form_right"
+            app:exitAnim="@anim/to_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right">
             <argument
                 android:name="boardId"
                 app:argType="string" />
@@ -64,6 +69,9 @@
                 android:name="BoardName"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_homeFragment_to_chatSearch2"
+            app:destination="@id/chatSearch" />
     </fragment>
     <fragment
         android:id="@+id/boardFragment"
@@ -131,5 +139,27 @@
             android:name="boardId"
             app:argType="string" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.projectmanagement.ui.fragment.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="reciverUid"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatSearch"
+        android:name="com.example.projectmanagement.ui.fragment.ChatSearch"
+        android:label="fragment_chat_search"
+        tools:layout="@layout/fragment_chat_search" >
+        <action
+            android:id="@+id/action_chatSearch_to_chatFragment"
+            app:destination="@id/chatFragment"
+            />
+        <argument
+            android:name="reciverUid"
+            app:argType="string" />
     </fragment>
 </navigation>

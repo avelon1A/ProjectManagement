@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_item_background"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/search_image"
+        android:layout_width="@dimen/item_member_member_image_size"
+        android:layout_height="@dimen/item_member_member_image_size"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+       android:padding="5dp"
+        android:src="@drawable/baseline_person_24" />
+
+    <TextView
+        android:id="@+id/search_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="search result"
+        android:textSize="18sp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

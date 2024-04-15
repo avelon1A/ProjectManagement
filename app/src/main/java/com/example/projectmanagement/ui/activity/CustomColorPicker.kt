@@ -1,5 +1,3 @@
-package com.example.projectmanagement.ui.activity
-
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +5,10 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.projectmanagement.R
 
-fun CustomColorPickerDialog(context: Context,onColorSelected:(Int)-> Unit){
-    val dialogView = LayoutInflater.from(context).inflate(R.layout.color_picker,null)
+fun CustomColorPickerDialog(context: Context, onColorSelected: (Int) -> Unit) {
+    val dialogView = LayoutInflater.from(context).inflate(R.layout.color_picker, null)
     val alertDialogBuilder = AlertDialog.Builder(context)
-        .setView(dialogView )
+        .setView(dialogView)
         .setCancelable(true)
 
     val dialog = alertDialogBuilder.create()
@@ -44,6 +42,5 @@ fun CustomColorPickerDialog(context: Context,onColorSelected:(Int)-> Unit){
         dialog.dismiss()
     }
 
-    dialog.dismiss()
-
+    dialog.show()
 }
