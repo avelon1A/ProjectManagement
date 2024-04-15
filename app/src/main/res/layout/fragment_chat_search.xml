@@ -43,6 +43,8 @@
                 android:gravity="center_vertical"
                 android:hint="         search"
                 android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
                 android:textColor="@color/primary_text_color"
                 android:textSize="@dimen/toolbar_title_text_size"
                 android:textStyle="bold"

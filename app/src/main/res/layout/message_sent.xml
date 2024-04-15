@@ -4,16 +4,40 @@
     android:orientation="vertical"
     android:layout_marginBottom="10dp">
 
-    <TextView
-        android:layout_gravity="end"
-        android:id="@+id/messageTextView"
+    <LinearLayout
+        android:id="@+id/msg_send_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:gravity="center"
+        android:layout_marginTop="2dp"
         android:background="@drawable/chat_background_send"
-        android:padding="8dp"
-        android:text="hii"
-        android:textSize="16sp" />
+        android:orientation="vertical"
+        android:layout_gravity="end"
+        >
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+           android:layout_marginLeft="15dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="2dp"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:text="hii" />
+        <TextView
+            android:layout_gravity="end"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="time"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -58,10 +59,15 @@ class ChatSearch : Fragment(), ChatSearchClick {
         viewModel = ChatSearchViewModel()
         recyclerView = binding.chatSearch
 
-        binding.tvTitleTask.setOnClickListener {
-            viewModel.search(binding.tvTitleTask.text.toString())
-        }
-        lifecycleScope.launch {
+            binding.tvTitleTask.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    viewModel.search(binding.tvTitleTask.text.toString())
+                    return@setOnEditorActionListener true
+                }
+                false
+            }
+
+            lifecycleScope.launch {
             viewModel.chatResult.collect {
                 when (it) {
                     is Resource.Loading -> {

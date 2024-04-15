@@ -7,12 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmanagement.R
 import com.example.projectmanagement.model.Message
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MessageAdapter(var messages: List<Message>, val currentUserUid: String) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageTextView: TextView = itemView.findViewById(R.id.messageTextView)
+        val time:TextView = itemView.findViewById(R.id.time)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
@@ -29,6 +32,10 @@ class MessageAdapter(var messages: List<Message>, val currentUserUid: String) :
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
         holder.messageTextView.text = message.message
+        val date = message.timestamp?.let { Date(it) }
+        val sdf = SimpleDateFormat("HH:mm")
+        val formattedTime = sdf.format(date)
+        holder.time.text = formattedTime
     }
 
     override fun getItemCount(): Int {
