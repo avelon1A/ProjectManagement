@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmanagement.adapter.MessageAdapter
@@ -18,10 +19,9 @@ class ChatFragment : Fragment() {
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
     private lateinit var localData: LocalData
-
     private val viewModel: ChatViewModel by viewModels()
+    private val args: ChatSearchArgs by navArgs()
     private lateinit var messageAdapter: MessageAdapter
-    private    val args: ChatSearchArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,32 +34,45 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         localData = LocalData(requireContext())
-        val reciverid = args.reciverUid
+        val receiverUid = args.reciverUid
+        val reciverName = args.recivername
         val currentUser = localData.getCurrentUserId()
+        setupRecyclerView(currentUser!!)
+        viewModel.messages.observe(viewLifecycleOwner) { messages ->
+            messageAdapter.messages = messages
+            messageAdapter.notifyDataSetChanged()
+            binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount - 1)
+        }
+        viewModel.setReceiverUid(receiverUid)
+        setupClickListeners()
+        binding.tvTitleTask.text = reciverName
+    }
 
-        messageAdapter = MessageAdapter(emptyList(),currentUser!!)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupRecyclerView(currentUser: String) {
+        messageAdapter = MessageAdapter(emptyList(), currentUser)
         binding.chatRecyclerView.apply {
             adapter = messageAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
 
-        viewModel.messages.observe(viewLifecycleOwner) { messages ->
-            messageAdapter.messages = messages
-            messageAdapter.notifyDataSetChanged()
+    private fun setupClickListeners() {
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
-        viewModel.setReceiverUid(reciverid)
-
         binding.sendButton.setOnClickListener {
             val message = binding.messageEditText.text.toString().trim()
             if (message.isNotEmpty()) {
                 viewModel.sendMessage(message)
                 binding.messageEditText.setText("")
             }
-        }
-    }
+            binding.chatRecyclerView.scrollToPosition(messageAdapter.itemCount - 1)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        }
     }
 }

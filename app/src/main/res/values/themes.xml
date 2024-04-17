@@ -5,6 +5,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/ColorAccent</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="Theme.ProjectManagement" parent="Base.Theme.ProjectManagement" />

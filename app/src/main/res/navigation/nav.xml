@@ -72,6 +72,8 @@
         <action
             android:id="@+id/action_homeFragment_to_chatSearch2"
             app:destination="@id/chatSearch" />
+
+
     </fragment>
     <fragment
         android:id="@+id/boardFragment"
@@ -148,6 +150,9 @@
         <argument
             android:name="reciverUid"
             app:argType="string" />
+        <argument
+            android:name="recivername"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/chatSearch"
@@ -161,5 +166,9 @@
         <argument
             android:name="reciverUid"
             app:argType="string" />
+        <argument
+            android:name="recivername"
+            app:argType="string" />
+
     </fragment>
 </navigation>

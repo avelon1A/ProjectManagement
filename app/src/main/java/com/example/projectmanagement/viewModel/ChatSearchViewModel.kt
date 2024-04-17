@@ -15,6 +15,7 @@ class ChatSearchViewModel:ViewModel() {
     private val _chatResult = MutableStateFlow<Resource<ArrayList<User>>>(Resource.unSpecified())
     val chatResult: StateFlow<Resource<ArrayList<User>>> = _chatResult
 
+
     fun search(username: String) {
         _chatResult.value = Resource.Loading()
 

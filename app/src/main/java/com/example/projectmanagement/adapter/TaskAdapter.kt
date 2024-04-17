@@ -3,7 +3,6 @@ package com.example.projectmanagement.adapter
 
 import android.content.Context
 import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmanagement.R
 import com.example.projectmanagement.model.Task
-import com.google.common.io.LineReader
 
 // START
 open class TaskListItemsAdapter(
@@ -37,8 +35,6 @@ open class TaskListItemsAdapter(
 
         return MyViewHolder(view)
     }
-
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
 
@@ -132,13 +128,11 @@ open class TaskListItemsAdapter(
     override fun getItemCount(): Int {
         return list.size +1
     }
-
     private fun Int.toDp(): Int =
         (this / Resources.getSystem().displayMetrics.density).toInt()
 
     private fun Int.toPx(): Int =
         (this * Resources.getSystem().displayMetrics.density).toInt()
-
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvAddCardList: TextView = view.findViewById(R.id.tv_add_task_list)
@@ -159,21 +153,6 @@ open class TaskListItemsAdapter(
         val ibCardNameDone: ImageButton = view.findViewById(R.id.ib_done_card_name)
         val etAddCardName: EditText = view.findViewById(R.id.et_card_name)
         val rvCardList:RecyclerView = view.findViewById(R.id.rv_card_list)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
