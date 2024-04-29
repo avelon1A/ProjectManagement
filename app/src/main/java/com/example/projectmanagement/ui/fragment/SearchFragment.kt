@@ -14,7 +14,10 @@ import com.bumptech.glide.Glide
 import com.example.projectmanagement.databinding.FragmentSearchBinding
 import com.example.projectmanagement.ui.activity.CustomLoadingDialog
 import com.example.projectmanagement.viewModel.SearchViewModel
+import emailValid
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class SearchFragment : Fragment() {
@@ -56,7 +59,19 @@ class SearchFragment : Fragment() {
         binding.buttonSearch.setOnClickListener {
             val searchName = binding.editTextSearch.text.toString()
             Log.d("searchName", searchName)
-            viewModel.search(searchName)
+            if(emailValid(searchName) is RegisterValidation.Succes){
+                viewModel.search(searchName)
+            }
+            else{
+                binding.editTextSearch.apply {
+
+                        binding.editTextSearch.apply {
+                            requestFocus()
+                            error = "enter a valid email "
+
+                    }
+                }
+            }
         }
 
 

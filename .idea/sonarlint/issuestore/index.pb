@@ -83,3 +83,11 @@ y
 Iapp/src/main/java/com/example/projectmanagement/ui/fragment/ChatSearch.kt,9\7\974359f6f92e439f1ee7ccf139c313aa52dfaecf
 x
 Happ/src/main/java/com/example/projectmanagement/adapter/MesageAdapter.kt,2\f\2fb293517cd0619633316dcd8b23a12c145f832f
+q
+Aapp/src/main/java/com/example/projectmanagement/uitl/LocalData.kt,a\9\a9ef8c3f82b16daaf6d7d3038a110083b351ecda
+}
+Mapp/src/main/java/com/example/projectmanagement/adapter/SearchSavedAdapter.kt,5\f\5feb4e3d751e67d041bc30e628ff561da88fc319
+
+Oapp/src/main/java/com/example/projectmanagement/uitl/SharedPreferenceshelper.kt,5\4\543b5b54d7173620b3bc0ac96cda7c71476ba0b9
+v
+Fapp/src/main/java/com/example/projectmanagement/adapter/TaskAdapter.kt,f\6\f6b0a3d85767ee769e5253881bd9995d41f03da6
